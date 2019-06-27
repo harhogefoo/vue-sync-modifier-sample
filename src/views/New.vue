@@ -1,6 +1,10 @@
 <template>
   <div>
-    <user-input-form :user="user" @submit="createUser" />
+    <user-input-form
+      :email.sync="user.email"
+      :name.sync="user.name"
+      @submit="createUser"
+    />
   </div>
 </template>
 

@@ -2,11 +2,19 @@
   <form @submit.prevent="$emit('send')">
     <label>
       メールアドレス
-      <input type="text" v-model="user.email" />
+      <input
+        type="text"
+        :value="email"
+        @input="$emit('update:email', $event.target.value)"
+      />
     </label>
     <label>
       名前
-      <input type="text" v-model="user.name" />
+      <input
+        type="text"
+        :value="name"
+        @input="$emit('update:name', $event.target.value)"
+      />
     </label>
     <button type="submit" @click="$emit('submit')">登録</button>
   </form>
@@ -15,9 +23,13 @@
 <script>
 export default {
   props: {
-    user: {
-      type: Object,
-      default: () => ({})
+    email: {
+      type: String,
+      default: ""
+    },
+    name: {
+      type: String,
+      default: ""
     }
   }
 };
